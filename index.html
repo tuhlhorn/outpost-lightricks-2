@@ -5,1164 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Outpost x JetBrains: Unlock revenue potential in Mexico</title>
     <style>
-        /* ===== CSS Variables - JetBrains Color Scheme ===== */
+        /* ===== CSS Variables - Lightricks Color Scheme ===== */
         :root {
-            --bg-primary: #000000;
-            --bg-secondary: #0d0d0d;
-            --bg-tertiary: #1a1a1a;
-            --border-color: #2b2b2b;
-            --text-primary: #ffffff;
-            --text-secondary: #a8a8a8;
-            --text-tertiary: #6b6b6b;
-            --accent: #6b57ff;
-            --accent-dim: rgba(107, 87, 255, 0.1);
-            --accent-hover: #8979ff;
-            --success: #6b57ff;
-            --danger: #f31199;
-            --warning: #ffc107;
-            --link-color: #6b57ff;
+            /* Lightricks colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7f8fa;
+            --bg-tertiary: #e8ebf0;
+            --bg-dark: #0a0b0d;
+            --border-color: #e0e3e8;
+            --text-primary: #0a0b0d;
+            --text-secondary: #5a6171;
+            --text-tertiary: #8892a2;
+            --accent: #4e5fff;
+            --accent-dim: rgba(78, 95, 255, 0.1);
+            --accent-hover: #3a4bff;
+            --success: #4e5fff;
+            --danger: #ff3b3b;
+            --warning: #ffa500;
+            --link-color: #4e5fff;
             
-            /* JetBrains specific */
-            --jb-purple: #6b57ff;
-            --jb-purple-hover: #8979ff;
-            --jb-purple-dim: rgba(107, 87, 255, 0.8);
-            --jb-purple-fog: rgba(107, 87, 255, 0.2);
-            --jb-pink: #f31199;
-            --jb-card-bg: #0f0f0f;
-            --jb-card-hover: #141414;
+            /* Lightricks specific */
+            --ltx-purple: #4e5fff;
+            --ltx-purple-hover: #3a4bff;
+            --ltx-purple-dim: rgba(78, 95, 255, 0.8);
+            --ltx-purple-fog: rgba(78, 95, 255, 0.15);
+            --ltx-pink: #ff3b3b;
+            --ltx-card-bg: #ffffff;
+            --ltx-card-hover: #f7f8fa;
+            --ltx-gradient: linear-gradient(135deg, #4e5fff 0%, #00d4ff 100%);
         }
         
-        /* ===== Base Styles ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        body {
-            font-family: "JetBrains Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-size: 16px;
-            line-height: 1.6;
-            overflow-x: hidden;
-            text-rendering: optimizeLegibility;
-            min-width: 320px;
-        }
-        
-        /* ===== Layout Components ===== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-        
-        .section {
-            padding: 100px 0;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .section-title {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-        }
-        
-        .section-subtitle {
-            font-size: 20px;
-            color: var(--text-secondary);
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-            font-weight: 400;
-        }
-        
-        /* ===== Navigation ===== */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.97);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 20px 0;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        nav.scrolled {
-            padding: 15px 0;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.01em;
-            transition: opacity 0.2s ease;
-        }
-        
-        .logo:hover {
-            opacity: 0.8;
-        }
-        
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-        
-        .nav-links a:not(.btn) {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-links a:not(.btn)::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        
-        .nav-links a:not(.btn):hover {
-            color: var(--text-primary);
-        }
-        
-        .nav-links a:not(.btn):hover::after {
-            transform: scaleX(1);
-        }
-        
-        /* ===== Buttons ===== */
-        .btn {
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 14px;
-            display: inline-block;
-        }
-        
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 20px rgba(107, 87, 255, 0.3);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: var(--accent-dim);
-        }
-        
-        /* ===== Hero Section ===== */
+        /* Update hero background */
         .hero {
-            padding: 180px 0;
-            text-align: center;
-            position: relative;
             background: var(--bg-primary);
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(78, 95, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
         }
         
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--accent-dim);
-            color: var(--accent);
-            padding: 8px 20px;
-            border-radius: 24px;
-            font-size: 14px;
-            margin-bottom: 24px;
-            border: 1px solid var(--jb-purple-fog);
-            animation: fadeInDown 0.6s ease;
-            font-weight: 500;
-        }
-        
-        .badge-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        h1 {
-            font-size: clamp(48px, 8vw, 72px);
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 30px;
-            animation: fadeInUp 0.8s ease;
-            color: var(--text-primary);
-        }
-        
+        /* Update gradient text */
         .gradient-text {
-            background: linear-gradient(135deg, var(--jb-purple), var(--jb-pink));
+            background: var(--ltx-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        .hero-subtitle {
-            font-size: clamp(20px, 3vw, 24px);
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-            animation: fadeInUp 0.8s ease 0.2s both;
-            font-weight: 400;
+        /* Update buttons */
+        .btn {
+            border-radius: 100px; /* More rounded for Lightricks style */
         }
         
-        .hero-buttons {
-            display: flex;
-            margin-bottom: 60px;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-        
-        .hero-callout {
-            margin-top: 80px;
-            padding: 24px 32px;
-            background: linear-gradient(135deg, var(--jb-card-bg) 0%, rgba(15, 15, 15, 0.8) 100%);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeInUp 0.8s ease 0.6s both;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-callout::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--accent) 20%, 
-                var(--accent) 80%, 
-                transparent 100%);
-            opacity: 0.8;
-        }
-        
-        .hero-callout-text {
-            font-size: 18px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            font-weight: 400;
-            text-align: center;
-            margin: 0;
-        }
-        
-        .hero-callout-text strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-        
-        /* ===== Cards ===== */
-        .card {
-            background: var(--jb-card-bg);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
-        .card:hover {
-            transform: translateY(-4px);
-            background: var(--jb-card-hover);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-            border-color: var(--accent);
-        }
-        
-        .card-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(243, 17, 153, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: var(--danger);
-            transition: all 0.3s ease;
-        }
-        
-        .card.orange .card-icon {
-            background: rgba(255, 193, 7, 0.1);
-            color: var(--warning);
-        }
-        
-        .card.yellow .card-icon {
-            background: rgba(255, 235, 59, 0.1);
-            color: #ffeb3b;
-        }
-        
-        .card:hover .card-icon {
-            transform: scale(1.1);
-        }
-        
-        .card-value {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #f31199;
-        }
-        
-        .card-label {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-        
-        .card-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            font-weight: 400;
-        }
-        
-        /* ===== Grid Layouts ===== */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
-        }
-        
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 48px;
-        }
-        
-        /* ===== Tables ===== */
-        .table-container {
-            background: var(--jb-card-bg);
-            border-radius: 16px;
-            padding: 0;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 16px;
-        }
-        
-        thead {
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        th {
-            padding: 28px 32px;
-            text-align: left;
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 16px;
-        }
-        
-        tbody tr {
-            border-bottom: 1px solid var(--border-color);
-            transition: all 0.2s ease;
-        }
-        
-        tbody tr:hover {
-            background: rgba(107, 87, 255, 0.05);
-        }
-        
-        tbody tr:last-child {
-            border-bottom: none;
-        }
-        
-        td {
-            padding: 24px 32px;
-            vertical-align: top;
-            line-height: 1.6;
-            color: var(--text-primary);
-        }
-
-        /* ===== Impact Toggle Styles ===== */
-        .impact-toggle {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px; /* Keep this the same */
-            gap: 0;
-            background: var(--bg-primary);
-            padding: 4px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .toggle-option {
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            color: var(--text-secondary);
-            background: transparent;
-            border: none;
-            font-size: 16px;
-        }
-        
-        .toggle-option.active {
-            background: var(--accent);
-            color: white;
-        }
-        
-        .toggle-option:hover:not(.active) {
-            color: var(--text-primary);
-        }
-        
-        .global-disclaimer {
-            background: rgba(107, 87, 255, 0.1);
-            border: 1px solid var(--jb-purple-fog);
-            border-radius: 12px;
-            padding: 20px 24px;
-            margin-bottom: 32px;
-            display: none;
-        }
-        
-        .global-disclaimer.active {
-            display: block;
-        }
-        
-        .disclaimer-icon-inline {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-            vertical-align: middle;
-            opacity: 0.8;
-        }
-        
-        .disclaimer-text-inline {
-            color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        
-        
-        /* ===== Calculator ===== */
-        .calculator-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            background: var(--jb-card-bg);
-            border-radius: 16px;
-            padding: 60px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
-        .input-group {
-            margin-bottom: 28px;
-        }
-        
-        .input-label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-            font-size: 16px;
-        }
-        
-        .input-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        
-        .input-prefix {
-            position: absolute;
-            left: 16px;
-            color: var(--text-secondary);
-            font-size: 18px;
-            font-weight: 400;
-            pointer-events: none;
-        }
-        
-        .calculator-input {
-            flex: 1;
-            padding: 14px 16px 14px 36px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: 400;
-            transition: all 0.2s ease;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-        }
-        
-        .calculator-input:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-dim);
-        }
-        
-        select.calculator-input {
-            width: 100%;
-            padding: 14px 48px 14px 16px;
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a8a8a8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 16px center;
-            background-size: 20px;
-        }
-        
-        .range-input {
-            flex: 1;
-            -webkit-appearance: none;
-            appearance: none;
-            height: 6px;
-            background: var(--border-color);
-            border-radius: 3px;
-            outline: none;
-        }
-        
-        .range-input::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: var(--accent);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .range-input::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 10px var(--accent);
-        }
-        
-        .range-value {
-            min-width: 70px;
-            text-align: right;
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--accent);
-        }
-        
-        .input-help {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-top: 8px;
-            display: block;
-        }
-
-        /* ===== Global Impact Hero Styles ===== */
-        .global-impact-hero {
-            display: none;
-            background: linear-gradient(135deg, rgba(107, 87, 255, 0.15) 0%, transparent 50%);
-            border: 2px solid var(--accent);
-            border-radius: 24px;
-            padding: 40px 40px;
-            text-align: center;
-            margin-bottom: 40px; /* Keep this the same */
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .global-impact-hero.active {
-            display: block;
-        }
-        
-        .global-impact-hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(107, 87, 255, 0.1) 0%, transparent 70%);
-            animation: pulse-slow 4s ease-in-out infinite;
-        }
-        
-        @keyframes pulse-slow {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.3; }
-        }
-        
-        .global-impact-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .global-impact-label {
-            font-size: 16px;  /* Reduced from 18px */
-            color: var(--text-secondary);
-            margin-bottom: 12px;  /* Reduced from 16px */
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        
-        .global-impact-value {
-            font-size: clamp(56px, 7vw, 80px);  /* Reduced from 64px-96px */
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--jb-purple), var(--jb-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-            margin-bottom: 12px;  /* Reduced from 16px */
-            letter-spacing: -0.03em;
-            display: inline-block;
-        }
-        
-        .global-impact-subtitle {
-            max-width: 680px;  /* Slightly reduced */
-            margin: 20px auto 0;  /* Reduced from 32px */
-            padding: 0 20px;  /* Reduced from 24px */
-            font-size: 21px;  /* Reduced from 24px */
-            color: var(--text-primary);
-            font-weight: 500;
-            margin-bottom: 24px;  /* Reduced from 32px */
-            line-height: 1.5;  /* Tighter line height */
-        }
-        
-        .global-impact-disclaimer {
-            max-width: 680px;  /* Slightly reduced */
-            margin: 20px auto 0;  /* Reduced from 32px */
-            padding: 20px;  /* Reduced from 24px */
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            border: 1px solid rgba(107, 87, 255, 0.2);
-        }
-        
-        .impact-disclaimer-text {
-            font-size: 13px;  /* Reduced from 14px */
-            color: var(--text-secondary);
-            line-height: 1.5;  /* Reduced from 1.6 */
-            margin: 0;
-            text-align: center;
-        }
-        
-        /* Update the disclaimer styling */
-        .global-disclaimer {
-            background: rgba(107, 87, 255, 0.08);
-            border: 1px solid rgba(107, 87, 255, 0.3);
-            border-radius: 12px;
-            padding: 24px 32px;
-            margin-bottom: 32px;
-            display: none;
-            position: relative;
-        }
-        
-        .global-disclaimer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
-        }
-        
-        .disclaimer-text-inline {
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.7;
-            text-align: center;
-        }
-        
-        .disclaimer-text-inline strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-        
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .global-impact-hero {
-                padding: 40px 20px;  /* Reduced from 60px */
-            }
-            
-            .global-impact-value {
-                font-size: 48px;  /* Reduced from 56px */
-            }
-            
-            .global-impact-subtitle {
-                font-size: 18px;  /* Reduced from 20px */
-                padding: 0 10px;  /* Added padding adjustment */
-            }
-            
-            .global-impact-disclaimer {
-                padding: 16px;  /* Reduced from 20px */
-                margin: 20px 10px 0;  /* Reduced margins */
-            }
-            
-            .impact-disclaimer-text {
-                font-size: 12px;  /* Reduced from 13px */
-            }
-        }
-        
-        /* ===== Calculator Results ===== */
-        .calculator-results {
-            background: rgba(107, 87, 255, 0.05);
-            border-radius: 12px;
-            padding: 40px;
-            border: 1px solid var(--jb-purple-fog);
-        }
-        
-        .result-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .result-item:last-of-type {
-            border-bottom: none;
-        }
-        
-        .result-item.highlight {
-            background: var(--accent-dim);
-            margin: 0 -20px;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--jb-purple-fog);
-        }
-        
-        .result-label {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-        
-        .result-value {
-            font-size: 20px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        
-        .result-value.positive {
-            color: var(--success);
-        }
-        
-        .result-value.negative {
-            color: var(--danger);
-        }
-        
-        .result-divider {
-            height: 1px;
-            background: var(--border-color);
-            margin: 24px 0;
-        }
-
-        /* UPDATE the calculator-container when in global mode */
-        .calculator-container.global-mode {
-            display: none;
-        }
-        
-        /* ===== Modal ===== */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
-            background: var(--jb-card-bg);
-            border-radius: 16px;
-            padding: 48px;
-            max-width: 500px;
-            width: 100%;
-            position: relative;
-            animation: modalSlideIn 0.3s ease;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--border-color);
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 32px;
-            height: 32px;
-            background: var(--bg-secondary);
-            border-radius: 50%;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-            color: var(--text-secondary);
-            font-size: 20px;
-        }
-        
-        .modal-close:hover {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-        }
-        
-        .modal-title {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
-        
-        .modal-subtitle {
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            font-weight: 400;
-        }
-        
-        .form-group {
-            margin-bottom: 24px;
-        }
-        
-        .form-label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.2s ease;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-        }
-        
-        .form-input:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-dim);
-        }
-        
-        .form-submit {
-            width: 100%;
-            margin-top: 32px;
-        }
-        
-        /* ===== Animations ===== */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.5); opacity: 0.5; }
-        }
-        
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* ===== Specific Sections ===== */
-        .bg-secondary {
-            background: var(--bg-secondary);
-        }
-        
-        .bg-primary {
-            background: var(--bg-primary);
-        }
-        
-        .impact-item {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 60px;
-            align-items: center;
-            padding: 48px;
-            background: var(--jb-card-bg);
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            margin-bottom: 48px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
-        .impact-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-            border-color: var(--accent);
-            background: var(--jb-card-hover);
-        }
-        
-        .metric-icon {
-            width: 72px;
-            height: 72px;
-            background: var(--accent-dim);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            color: var(--accent);
-        }
-        
-        .metric-value {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            text-align: center;
-        }
-        
-        .metric-number {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--accent);
-            line-height: 1;
-            letter-spacing: -0.02em;
-        }
-        
-        .metric-label {
-            font-size: 18px;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-        
-        .value-hero {
-            margin: 80px auto;
-            max-width: 1100px;
-            padding: 60px 40px;
-            background: linear-gradient(135deg, var(--jb-card-bg) 0%, rgba(15, 15, 15, 0.8) 100%);
-            border-radius: 16px;
-            text-align: center;
-            border: 2px solid var(--accent);
-            position: relative;
-            overflow: hidden;
-        }
-        
+        /* Update value hero */
         .value-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(107, 87, 255, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        
-        .value-hero-content {
-            position: relative;
-            z-index: 1;
-            font-size: 24px;
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-        
-        .value-highlight {
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 32px;
-            display: block;
-            margin-top: 10px;
-        }
-        
-        /* ===== Footer/Disclaimer ===== */
-        .disclaimer-footer {
-            background: var(--bg-tertiary);
-            border-top: 1px solid var(--border-color);
-            padding: 40px 0;
-            margin-top: 0;
-        }
-        
-        .disclaimer-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .disclaimer-text {
-            color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.6;
-            font-weight: 400;
-        }
-        
-        .disclaimer-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin-right: 8px;
-            vertical-align: middle;
-            opacity: 0.6;
-        }
-        
-        @media (max-width: 768px) {
-            .disclaimer-footer {
-                padding: 30px 0;
-            }
-            
-            .disclaimer-text {
-                font-size: 13px;
-                padding: 0 20px;
-            }
-        }
-        
-        /* ===== Responsive ===== */
-        @media (max-width: 1024px) {
-            .calculator-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                padding: 40px;
-            }
-            
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            
-            .impact-item {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 20px;
-            }
-        
-            .nav-links a:not(.btn) {
-                display: none;
-            }
-            
-            h1 {
-                font-size: 48px;
-            }
-            
-            .hero-subtitle {
-                font-size: 18px;
-            }
-
-            .section-header {
-                margin-bottom: 32px; /* Reduced for mobile */
-            }
-            
-            .impact-toggle {
-                margin-bottom: 32px; /* Reduced for mobile */
-            }
-            
-            .global-impact-hero {
-                margin-bottom: 32px; /* Reduced for mobile */
-                padding: 40px 20px; /* Also updating padding for consistency */
-            }
-            
-            .section-title {
-                font-size: 32px;
-            }
-            
-            .grid-3 {
-                grid-template-columns: 1fr;
-            }
-            
-            .table-container {
-                overflow-x: auto;
-            }
-            
-            table {
-                min-width: 700px;
-            }
-            
-            .value-hero {
-                margin: 60px auto;
-                padding: 40px 20px;
-            }
-            
-            .value-hero-content {
-                font-size: 20px;
-            }
-            
-            .value-highlight {
-                font-size: 24px;
-            }
+            background: var(--ltx-gradient);
+            opacity: 0.05;
         }
     </style>
 </head>
@@ -1171,7 +68,7 @@
     <nav id="navbar">
         <div class="container">
             <div class="nav-container">
-                <a href="/" class="logo">Outpost x JetBrains</a>
+                <a href="/" class="logo">Outpost x Lightricks</a>
                 <div class="nav-links">
                     <a href="#problem">Problem</a>
                     <a href="#solution">Solution</a>
@@ -1191,12 +88,12 @@
             </div>
             
             <h1>
-                Get <span class="gradient-text dynamic-percentage-mexico">10%</span> more out<br>
+                Get <span class="gradient-text dynamic-percentage">10%</span> more out<br>
                 of Mexico with Outpost
             </h1>
             
             <p class="hero-subtitle">
-                JetBrains is leaving $<span class="dynamic-value-mexico">111k</span> on the table every year in Mexico.
+                Lightricks is leaving $<span class="dynamic-value">111k</span> on the table every year in Mexico.
                 <br><br><strong>Unlock it with Outpost.</strong>
             </p>
             
@@ -1208,21 +105,20 @@
                     Book demo
                 </button>
             </div>
-        <div class="hero-callout">
-            <p class="hero-callout-text">
-                <strong>Outpost</strong> partners with enterprises like <strong>JetBrains</strong> so they can sell in Mexico like a local. Offload your tax, compliance, payments, legal and operational burdens to Outpost.
-            </p>
+            <div class="hero-callout">
+                <p class="hero-callout-text">
+                    <strong>Outpost</strong> partners with enterprises like <strong>Lightricks</strong> so they can sell in Mexico like a local. Offload your tax, compliance, payments, legal and operational burdens to Outpost.
+                </p>
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
 
     <!-- Problem Section -->
     <section class="section bg-secondary" id="problem">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">The hidden cost of global expansion</h2>
-                <p class="section-subtitle">Software companies expanding to Mexico are leaving substantial value on the table every year due to inefficient payments and tax infrastructure. We estimate it is costing JetBrains $<span class="dynamic-value">111k</span> per annum in churned revenue, lower margins and long tail risk management.</p>
+                <p class="section-subtitle">Global B2C software companies in to Mexico are leaving substantial value on the table every year from inefficient payments and tax infrastructure. We estimate it's costing Lightricks $<span class="dynamic-value">111k</span> per annum in churned revenue, lower margins and long tail risk management.</p>
             </div>
             
             <div class="grid-3">
@@ -1233,7 +129,7 @@
                             <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                         </svg>
                     </div>
-                    <div class="card-value">-<span class="dynamic-fx">-$45K</div>
+                    <div class="card-value">-<span class="dynamic-fx">-$45K</span></div>
                     <div class="card-label">Payment provider and FX costs</div>
                     <p class="card-description">
                         High costs of international acquiring, limited access to local APMs, rigid checkout flow and chargeback limitations.
@@ -1249,7 +145,7 @@
                             <circle cx="11" cy="19" r="1"></circle>
                         </svg>
                     </div>
-                    <div class="card-value">-<span class="dynamic-revenue">-$180K</div>
+                    <div class="card-value">-<span class="dynamic-revenue">-$180K</span></div>
                     <div class="card-label">Failed transactions</div>
                     <p class="card-description">
                         Lower approval rates mean transactions get declined and customers abandon the journey at checkout.
@@ -1263,7 +159,7 @@
                             <path d="M6 6l-3 6 3 6M18 6l3 6-3 6"></path>
                         </svg>
                     </div>
-                    <div class="card-value">-<span class="dynamic-compliance">-$60K+</div>
+                    <div class="card-value">-<span class="dynamic-compliance">-$60K+</span></div>
                     <div class="card-label">Tax compliance costs</div>
                     <p class="card-description">
                         Local compliance is costly and time consuming, and non compliance is fined at up to 70% of VAT owed per year.
@@ -1277,7 +173,7 @@
     <section class="section bg-primary" id="solution">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">The solution: Outpost One.</h2>
+                <h2 class="section-title">The solution: <span class="gradient-text">Outpost One</span>.</h2>
                 <p class="section-subtitle">
                     Outpost One is a complete Merchant of Record solution. We become the local seller for our merchants and take over local payment infrastructure, indirect tax compliance and tax liability to deliver tangible uplift to your bottom line. 
                 </p>
@@ -1323,7 +219,6 @@
                     
                     <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">No registration needed</h3>
                     <p style="color: var(--text-secondary); margin-bottom: 24px;">No RFC or FIEL required. Outpost is taxpayer of record.</p>
-                    
                 </div>
             </div>
 
@@ -1360,129 +255,127 @@
 
     <!-- Calculator Section -->
     <section class="section bg-secondary" id="calculator">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">The impact Outpost can have<br>for JetBrains<span id="region-text"> in Mexico</span>.</h2>
-        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The impact Outpost can have<br>for Lightricks<span id="region-text"> in Mexico</span>.</h2>
+            </div>
 
-        <div class="impact-toggle">
-            <button class="toggle-option active" onclick="toggleImpactView('mexico', event)">Mexico Impact</button>
-            <button class="toggle-option" onclick="toggleImpactView('global', event)">Global Impact</button>
-        </div>
+            <div class="impact-toggle">
+                <button class="toggle-option active" onclick="toggleImpactView('mexico', event)">Mexico Impact</button>
+                <button class="toggle-option" onclick="toggleImpactView('global', event)">Global Impact</button>
+            </div>
 
-        <!-- Global Impact Hero - New component -->
-        <div class="global-impact-hero" id="global-impact-hero">
-            <div class="global-impact-content">
-                <div class="global-impact-label">Total Global Value Unlocked</div>
-                <div class="global-impact-value">$18.7M</div>
-                <div class="global-impact-subtitle">We understand your problem is global, <strong>so is Outpost.</strong><br>Not only do we save you $18.7m, but you also don't have to worry about liability risk, transfer pricing, and compliance operations.</div>
+            <!-- Global Impact Hero - New component -->
+            <div class="global-impact-hero" id="global-impact-hero">
+                <div class="global-impact-content">
+                    <div class="global-impact-label">Total Global Value Unlocked</div>
+                    <div class="global-impact-value">$18.7M</div>
+                    <div class="global-impact-subtitle">We understand your problem is global, <strong>so is Outpost.</strong><br>Not only do we save you $18.7m, but you also don't have to worry about liability risk, transfer pricing, and compliance operations.</div>
+                    
+                    <button class="btn btn-primary" style="margin-top: 28px; font-size: 17px; padding: 14px 28px;" onclick="openModal()">
+                        Unlock $18.7M globally →
+                    </button>
+
+                    <div class="global-impact-disclaimer">
+                        <p class="impact-disclaimer-text">
+                            This estimate is based on JetBrains' $450m global revenue across the Americas, APAC and EMEA. We assumed region specific payment and approval rates and compliance requirements. We assume that Outpost would assist with c.50% of the markets, leading to addressing c.70% of the applicable JetBrains cost base globally. The savings shown are net of the Outpost fee. This value is an indicative estimate only, based on publicly available data which may be inaccurate or incomplete. Outpost makes no warranties regarding accuracy and accept no liability for decisions made using this information. Actual impact may differ materially.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="calculator-container" id="calculator-container">
+                <div>
+                    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 32px;">Your current setup</h3>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Annual revenue in Mexico</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="text" id="annual_revenue" class="calculator-input" value="12,000,000">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Average transaction value</label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">$</span>
+                            <input type="text" id="avg_transaction_value" class="calculator-input" value="25">
+                        </div>
+                        <span class="input-help">Average purchase amount per transaction</span>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Average Mexico approval rate</label>
+                        <div class="input-wrapper">
+                            <input type="range" id="current_approval" class="range-input" min="40" max="80" value="65">
+                            <span class="range-value" id="current_approval_value">65%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Cross-border & FX fees</label>
+                        <div class="input-wrapper">
+                            <input type="range" id="fx_fees" class="range-input" min="2" max="8" step="0.5" value="6">
+                            <span class="range-value" id="fx_fees_value">6.0%</span>
+                        </div>
+                        <span class="input-help">Total payment processing and currency fees</span>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">How do you handle tax compliance in Mexico?</label>
+                        <select id="compliance_status" class="calculator-input">
+                            <option value="non_compliant" selected>Non compliant</option>
+                            <option value="own_compliance">We do our own tax compliance</option>
+                            <option value="local_partner">We use a platform</option>
+                        </select>
+                    </div>
+                </div>
                 
-                <button class="btn btn-primary" style="margin-top: 28px; font-size: 17px; padding: 14px 28px;" onclick="openModal()">
-                    Unlock $18.7M globally →
-                </button>
+                <div class="calculator-results">
+                    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 32px;">Your current inefficiencies</h3>
+                    <div class="result-item">
+                        <span class="result-label">Lost revenue to approval rate</span>
+                        <span class="result-value negative">-<span id="revenue_increase">$0</span></span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <span class="result-label">Payment processing & FX fees</span>
+                        <span class="result-value negative">-<span id="fx_savings">$0</span></span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <span class="result-label">Compliance costs</span>
+                        <span class="result-value negative">-<span id="compliance_savings">$0</span></span>
+                    </div>
+                    
+                    <div class="result-item">
+                        <span class="result-label">Total cost</span>
+                        <span class="result-value negative">-<span id="total_inefficiency">$0</span></span>
+                    </div>
 
-                <div class="global-impact-disclaimer">
-                    <p class="impact-disclaimer-text">
-                        This estimate is based on JetBrains' $450m global revenue across the Americas, APAC and EMEA. We assumed region specific payment and approval rates and compliance requirements. We assume that Outpost would assist with c.50% of the markets, leading to addressing c.70% of the applicable JetBrains cost base globally. The savings shown are net of the Outpost fee. This value is an indicative estimate only, based on publicly available data which may be inaccurate or incomplete. Outpost makes no warranties regarding accuracy and accept no liability for decisions made using this information. Actual impact may differ materially.
+                    <div class="result-item highlight">
+                        <span class="result-label">Net impact of Outpost*</span>
+                        <span class="result-value positive" id="total_value">+$0</span>
+                    </div>
+
+                    <button class="btn btn-primary" style="width: 100%; font-size: 18px; margin-top: 40px;" onclick="openModal()">
+                        Save $<span class="dynamic-value">111k</span> — Book a demo
+                    </button>
+
+                    <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 16px; text-align: center; font-style: italic;">
+                        *Net value is inclusive of Outpost's flat fee
                     </p>
                 </div>
             </div>
         </div>
-        
-        <div class="calculator-container" id="calculator-container">
-            <div>
-                <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 32px;">Your current setup</h3>
-                
-                <div class="input-group">
-                    <label class="input-label">Annual revenue in Mexico</label>
-                    <div class="input-wrapper">
-                        <span class="input-prefix">$</span>
-                        <input type="text" id="annual_revenue" class="calculator-input" value="12,000,000">
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label class="input-label">Average transaction value</label>
-                    <div class="input-wrapper">
-                        <span class="input-prefix">$</span>
-                        <input type="text" id="avg_transaction_value" class="calculator-input" value="250">
-                    </div>
-                    <span class="input-help">Average purchase amount per transaction</span>
-                </div>
-                
-                <div class="input-group">
-                    <label class="input-label">Average Mexico approval rate</label>
-                    <div class="input-wrapper">
-                        <input type="range" id="current_approval" class="range-input" min="40" max="80" value="65">
-                        <span class="range-value" id="current_approval_value">65%</span>
-                    </div>
-                </div>
-                
-                <div class="input-group">
-                    <label class="input-label">Cross-border & FX fees</label>
-                    <div class="input-wrapper">
-                        <input type="range" id="fx_fees" class="range-input" min="2" max="8" step="0.5" value="6">
-                        <span class="range-value" id="fx_fees_value">6.0%</span>
-                    </div>
-                    <span class="input-help">Total payment processing and currency fees</span>
-                </div>
-                
-                <div class="input-group">
-                    <label class="input-label">How do you handle tax compliance in Mexico?</label>
-                    <select id="compliance_status" class="calculator-input">
-                        <option value="non_compliant" selected>Non compliant</option>
-                        <option value="own_compliance">We do our own tax compliance</option>
-                        <option value="local_partner">We use a platform</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="calculator-results">
-                <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 32px;">Your current inefficiencies</h3>
-                <div class="result-item">
-                    <span class="result-label">Lost revenue to approval rate</span>
-                    <span class="result-value negative">-<span id="revenue_increase">$0</span></span>
-                </div>
-                
-                <div class="result-item">
-                    <span class="result-label">Payment processing & FX fees</span>
-                    <span class="result-value negative">-<span id="fx_savings">$0</span></span>
-                </div>
-                
-                <div class="result-item">
-                    <span class="result-label">Compliance costs</span>
-                    <span class="result-value negative">-<span id="compliance_savings">$0</span></span>
-                </div>
-
-                
-                <div class="result-item">
-                    <span class="result-label">Total cost</span>
-                    <span class="result-value negative">-<span id="total_inefficiency">$0</span></span>
-                </div>
-
-
-                <div class="result-item highlight">
-                    <span class="result-label">Net impact of Outpost*</span>
-                    <span class="result-value positive" id="total_value">+$0</span>
-                </div>
-
-                <button class="btn btn-primary" style="width: 100%; font-size: 18px; margin-top: 40px;" onclick="openModal()">
-                    Save $<span class="dynamic-value">111k</span> — Book a demo
-                </button>
-
-                <p style="font-size: 12px; color: var(--text-tertiary); margin-top: 16px; text-align: center; font-style: italic;">
-                    *Net value is inclusive of Outpost's flat fee
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Comparison Section -->
     <section class="section bg-primary">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">We are the only enterprise-grade MoR, delivering all of the above with your <span class="gradient-text">dedicated Outpost entity</span></h2>
+                <h2 class="section-title">We are the only enterprise-grade MoR, delivering all of the above via your <span class="gradient-text">own dedicated Outpost entity</span></h2>
             </div>
             
             <div class="table-container">
@@ -1573,7 +466,7 @@
     <!-- CTA Section -->
     <section class="section bg-secondary" style="text-align: center; border-top: 1px solid var(--border-color);">
         <div class="container">
-            <h2 class="section-title">Your IDE can debug code,<br>but it can't debug a $<span class="dynamic-value">111k</span> cash leak</h2>
+            <h2 class="section-title">Your apps can remove any background,<br>but they can't remove a $<span class="dynamic-value">111k</span> cash leak</h2>
             <button class="btn btn-primary" style="margin-top: 40px; font-size: 18px; padding: 16px 32px;" onclick="openModal()">
                 Book demo →
             </button>
@@ -1581,20 +474,20 @@
     </section>
 
     <!-- Disclaimer Footer -->
-<footer class="disclaimer-footer">
-    <div class="container">
-        <div class="disclaimer-content">
-            <p class="disclaimer-text">
-                <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="16" x2="12" y2="12"></line>
-                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                </svg>
-                The cost savings estimates on this website are for informational purposes only and based on general assumptions and publicly available data. Actual results may vary significantly based on your specific business circumstances, transaction volumes, and market conditions. These estimates do not constitute guarantees, formal quotes, or professional advice. You should consult qualified advisors before making business decisions. Outpost disclaims all liability for any loss arising from reliance on these projections. Viewing this website does not create any client relationship. Governed by English law. 2025
-            </p>
+    <footer class="disclaimer-footer">
+        <div class="container">
+            <div class="disclaimer-content">
+                <p class="disclaimer-text">
+                    <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    The cost savings estimates on this website are for informational purposes only and based on general assumptions and publicly available data. Actual results may vary significantly based on your specific business circumstances, transaction volumes, and market conditions. These estimates do not constitute guarantees, formal quotes, or professional advice. You should consult qualified advisors before making business decisions. Outpost disclaims all liability for any loss arising from reliance on these projections. Viewing this website does not create any client relationship. Governed by English law. 2025
+                </p>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
     <!-- Scripts -->
     <script>
